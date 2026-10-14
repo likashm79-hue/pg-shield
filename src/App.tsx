@@ -1,12 +1,15 @@
-import { ChangeEvent, DragEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import type { ChangeEvent, DragEvent } from "react";
 import {
   ShieldCheck, FileText, UploadCloud, ClipboardCheck, AlertTriangle,
   CheckCircle2, CircleHelp, LoaderCircle, X, Sparkles, Languages,
   ArrowRight, RotateCcw, FileSearch, House, ChevronDown
 } from "lucide-react";
 import * as pdfjsLib from "pdfjs-dist";
-import pdfWorker from "pdfjs-dist/build/pdf.worker.min.mjs?url";
-
+const pdfWorker = new URL(
+  "pdfjs-dist/build/pdf.worker.min.mjs",
+  import.meta.url
+).toString();
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
 
 type Risk = {
